@@ -1,0 +1,16 @@
+﻿
+@{
+    ViewBag.Title = "Multidata";
+}
+<h2>Multidata</h2>
+<div class="table-bordered">
+    @{ WebGrid obj = new WebGrid(source: Model.invoice, canPage: true, rowsPerPage: 5);}
+    @obj.GetHtml()
+    @obj
+</div>
+<br />
+<br />
+<div>
+    @{ WebGrid obj1 = new WebGrid(source: Model.details, canPage: true, rowsPerPage: 5);}
+    @obj1.GetHtml()
+</div>

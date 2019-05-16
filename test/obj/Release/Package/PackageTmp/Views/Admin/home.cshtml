@@ -1,0 +1,50 @@
+﻿
+@{
+    ViewBag.Title = "home";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@if (Session["UserName"] == null)
+{
+    <script type="text/javascript">
+
+        window.onload = window.history.forward(0);  //calling function on window on-load
+
+    </script>
+    <head runat="server">
+        <script type="text/javascript">
+
+            windowwindow.onload = window.history.forward(0);
+
+        </script>
+        <style>
+            table{
+                height:500px;
+            }
+        </style>
+        <title></title>
+    </head>
+}
+@*<h2 style="color:blue">Home</h2>
+
+<div class="bottom">
+
+    <a class="bottom" href="~/Admin/Login" style="color:blue">Admin login</a>
+</div>
+
+<div class="bottom">
+
+    <a class="bottom" href="~/User/LogIn">clerk login</a>
+</div>*@
+    <div>
+        <table align="center" >
+            <tr>
+                <td>
+                    @Html.ActionLink("Admin Login", "Login", "Admin", null, new { @class = "btn btn-primary btn-lg" })&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                </td>
+                <td>
+                    @Html.ActionLink("Clerk Login", "Login", "User", null, new { @class = "btn btn-primary btn-lg" })
+                </td>
+
+            </tr>
+        </table>
+    </div>

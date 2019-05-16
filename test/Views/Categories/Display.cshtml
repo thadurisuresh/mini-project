@@ -1,0 +1,129 @@
+﻿@model IEnumerable<test.Models.Category>
+
+@{
+    ViewBag.Title = "Display";
+}
+
+@*<h2>Display</h2>*@
+@if (Session["UserName"] == null)
+{
+    <script type="text/javascript">
+
+        window.onload = window.history.forward(0);  //calling function on window on-load
+
+    </script>
+    <head runat="server">
+        <script type="text/javascript">
+
+            windowwindow.onload = window.history.forward(0);
+
+        </script>
+
+        <title></title>
+    </head>
+}
+<style>
+    #apply {
+        font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+        #apply td, #apply th {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+
+        #apply tr {
+            background-color: #f2f2f2;
+        }
+
+            #apply tr:hover {
+                background-color: #ddd;
+            }
+
+        #apply th {
+            padding-top: 12px;
+            padding-bottom: 12px;
+            text-align: left;
+            background-color: #4CAF50;
+            color: white;
+
+        }
+    .button1 {
+        box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+        -webkit-transition: width 2s; /* For Safari 3.1 to 6.0 */
+        transition: width 2s;
+    }
+
+    .button2:hover {
+        box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+        width: 300px;
+    }
+    #myDiv {
+        -webkit-transform: rotateX(150deg); /* Safari */
+        transform: rotateX(150deg); /* Standard syntax */
+    }
+</style>
+@if (Session["UserName"] == null)
+{
+    <script type="text/javascript">
+
+        window.onload = window.history.forward(0);  //calling function on window on-load
+
+    </script>
+    <head runat="server">
+        <script type="text/javascript">
+
+            windowwindow.onload = window.history.forward(0);
+
+        </script>
+
+        <title></title>
+    </head>
+}
+
+    <h2><a href="~/Categories/Create" style="color:indigo">Create New Category</a></h2>
+ 
+   
+
+  
+<table class="table table-striped w-auto" id="apply" style="color:black">
+    <tr class="table-info">
+        <th scope="row">
+            @Html.DisplayNameFor(model => model.CategoryName)
+        </th>
+        <th scope="row">
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr class="table-condensed">
+            <td>
+                @Html.DisplayFor(modelItem => item.CategoryName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+
+                <input type="button" class="btn btn-info button button1"
+                       value="Update Record" 
+                       onclick="location.href='@Url.Action("Edit", "Categories",new { id = item.CategoryID })'" />|
+                <input type="button" class="btn btn-primary button button1"
+                       value="Details"
+                       onclick="location.href='@Url.Action("Details", "Categories",new { id = item.CategoryID })'" />|
+                <input type="button" class = "btn btn-danger button button1"
+                       value="Delete"
+                       onclick="location.href='@Url.Action("Delete", "Categories",new { id = item.CategoryID })'" />
+                @*@Html.ActionLink("Update Record", "Edit", new { id = item.CategoryID })*@ |
+                @*@Html.ActionLink("Category ", "Details", "Categories", null, new { id = item.CategoryID, @class = "btn btn-info" }) |
+                @Html.ActionLink("Delete", "Delete", "Categories", null, new { id = item.CategoryID, @class = "btn btn-danger" })*@
+            </td>
+        </tr>
+    }
+
+</table>

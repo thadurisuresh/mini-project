@@ -1,0 +1,76 @@
+﻿@model test.Models.OrderDetail
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/layout1.cshtml";
+}
+
+<h2>Details</h2>
+@if (Session["UserName"] == null)
+{
+    <script type="text/javascript">
+
+        window.onload = window.history.forward(0);  //calling function on window on-load
+
+    </script>
+    <head runat="server">
+        <script type="text/javascript">
+
+            windowwindow.onload = window.history.forward(0);
+
+        </script>
+
+        <title></title>
+    </head>
+}
+<div>
+    <h4>OrderDetail</h4>
+    <hr />
+    <dl class="dl-horizontal" style="color:black">
+        <dt>
+            @Html.DisplayNameFor(model => model.UnitPrice)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UnitPrice)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Quantity)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Quantity)
+        </dd>
+
+        <dt>
+            Total
+            @*@Html.DisplayNameFor(model => model.total)*@
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.total)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Order.OrderID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Order.OrderID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Product.ProductName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Product.ProductName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.OrderID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,103 @@
+﻿@model test.Models.CreateInvoice
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/layout1.cshtml";
+}
+
+<h2>Create</h2>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div class="container" style="color:black">
+        <div class="row">
+            <div class="col-md-7 col-md-offset-3">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <div class="text-center">
+                            <div class="form-horizontal">
+                                <h4>CreateInvoice</h4>
+                                <hr />
+                                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                @*<div class="form-group">
+                                        @Html.LabelFor(model => model.invoiceID, htmlAttributes: new { @class = "control-label col-md-2" })
+                                        <div class="col-md-10">
+                                            @Html.EditorFor(model => model.invoiceID, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.invoiceID, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>*@
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.fromAddress, "From Address", htmlAttributes: new { @class = "control-label col-md-3" })
+                                    <div class="col-md-7">
+                                        @Html.EditorFor(model => model.fromAddress, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.fromAddress, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.toaddress, "To Address", htmlAttributes: new { @class = "control-label col-md-3" })
+                                    <div class="col-md-7">
+                                        @Html.EditorFor(model => model.toaddress, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.toaddress, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.OrderDetail.OrderID, "Oreder Id", htmlAttributes: new { @class = "control-label col-md-3" })
+                                    <div class="col-md-7">
+                                        @*@Html.EditorFor(model => model.oderid, new { htmlAttributes = new { @class = "form-control" } })*@
+                                        @Html.DropDownList("OrderID", null, htmlAttributes: new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(model => model.oderid, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.notes, "Notes", htmlAttributes: new { @class = "control-label col-md-3" })
+                                    <div class="col-md-7">
+                                        @Html.EditorFor(model => model.notes, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.notes, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                @*<div class="form-group">
+                                        @Html.LabelFor(model => model.total, htmlAttributes: new { @class = "control-label col-md-2" })
+                                        <div class="col-md-10">
+                                            @Html.EditorFor(model => model.total, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.total, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>*@
+
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.PaidorNot, htmlAttributes: new { @class = "control-label col-md-3" })
+                                    <div class="col-md-7">
+                                        @Html.DropDownListFor(model => model.PaidorNot, new List<SelectListItem> { new SelectListItem() { Text = "YES", Value = "YES" }, new SelectListItem() { Text = "NO", Value = "NO" } }, "Paid or not", new { @class = "form-control" })
+
+                                        @*@Html.EditorFor(model => model.PaidorNot, new { htmlAttributes = new { @class = "form-control" } })*@
+                                        @Html.ValidationMessageFor(model => model.PaidorNot, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="col-md-offset-2 col-md-10">
+                                        <input type="submit" value="Create" class="btn btn-default" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+}
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>

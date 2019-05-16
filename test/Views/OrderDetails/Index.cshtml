@@ -1,0 +1,112 @@
+﻿@model IEnumerable<test.Models.OrderDetail>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/layout1.cshtml";
+}
+@if (Session["UserName"] == null)
+{
+    <script type="text/javascript">
+
+        window.onload = window.history.forward(0);  //calling function on window on-load
+
+    </script>
+    <head runat="server">
+        <script type="text/javascript">
+
+            windowwindow.onload = window.history.forward(0);
+
+        </script>
+
+        <title></title>
+    </head>
+}
+<h2>Index</h2>
+<style>
+    #apply {
+        font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+        #apply td, #apply th {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+
+        #apply tr {
+            background-color: #f2f2f2;
+        }
+
+            #apply tr:hover {
+                background-color: #ddd;
+            }
+
+        #apply th {
+            padding-top: 12px;
+            padding-bottom: 12px;
+            text-align: left;
+            background-color: #4CAF50;
+            color: white;
+        }
+</style>
+@*<p>
+    @Html.ActionLink("Create New", "Create")
+</p>*@
+<table class="table" id="apply" style="color:black">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.UnitPrice)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Quantity)
+        </th>
+        <th>
+         Total   
+         @*@Html.DisplayNameFor(model => model.total)*@
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Order.OrderID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Product.ProductID)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.UnitPrice)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Quantity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.total)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Order.OrderID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Product.ProductID)
+            </td>
+            <td>
+                <input type="button" class="btn btn-info"
+                       value="Edit"
+                       onclick="location.href='@Url.Action("Edit", "OrderDetails",new { id = item.OrderID })'" />|
+                <input type="button" class="btn btn-primary"
+                       value="Details"
+                       onclick="location.href='@Url.Action("Details", "OrderDetails",new { id = item.OrderID })'" />|
+                <input type="button" class="btn btn-danger"
+                       value="Delete"
+                       onclick="location.href='@Url.Action("Delete", "OrderDetails",new { id = item.OrderID })'" />
+                @*@Html.ActionLink("Edit", "Edit", new { id = item.OrderID }) |
+        @Html.ActionLink("Details", "Details", new { id = item.OrderID }) |
+        @Html.ActionLink("Delete", "Delete", new { id = item.OrderID })*@
+            </td>
+        </tr>
+    }
+
+</table>

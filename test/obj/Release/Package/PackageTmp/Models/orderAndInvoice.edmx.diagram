@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="6adc8bb6ec4f4393a92024a23a213fa2" Name="Diagram1">
+        <EntityTypeShape EntityType="team3Model.Category" Width="1.5" PointX="0.75" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="team3Model.Customer" Width="1.5" PointX="0.75" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="team3Model.Order" Width="1.5" PointX="3" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="team3Model.Registration" Width="1.5" PointX="5.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="team3Model.User" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
+        <AssociationConnector Association="team3Model.FK__Order__CustomerI__52593CB8" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="team3Model.CreateInvoice" Width="1.5" PointX="7.5" PointY="8" />
+        <EntityTypeShape EntityType="team3Model.Product1" Width="1.5" PointX="3" PointY="8.25" />
+        <AssociationConnector Association="team3Model.FK__Product1__Catego__656C112C" />
+        <EntityTypeShape EntityType="team3Model.OrderDetail" Width="1.5" PointX="5.25" PointY="8" />
+        <AssociationConnector Association="team3Model.FK__CreateInv__oderi__5FB337D6" />
+        <AssociationConnector Association="team3Model.FK__OrderDeta__Order__5535A963" />
+        <EntityTypeShape EntityType="team3Model.OrderProduct" Width="1.5" PointX="3" PointY="1.25" />
+        <AssociationConnector Association="team3Model.FK__OrderProd__custo__6EF57B66" />
+        <AssociationConnector Association="team3Model.FK__OrderProd__produ__71D1E811" />
+        <AssociationConnector Association="team3Model.FK__CreateInv__oderi__75A278F5" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

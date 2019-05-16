@@ -1,0 +1,88 @@
+﻿@model test.Models.CreateInvoice
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/layout1.cshtml";
+}
+
+<h2>Details</h2>
+@if (Session["UserName"] == null)
+{
+    <script type="text/javascript">
+
+        window.onload = window.history.forward(0);  //calling function on window on-load
+
+    </script>
+    <head runat="server">
+        <script type="text/javascript">
+
+            windowwindow.onload = window.history.forward(0);
+
+        </script>
+
+        <title></title>
+    </head>
+}
+<div>
+
+    <hr />
+    <dl class="dl-horizontal" style="color:black">
+        <dt>
+            From Address
+            @*@Html.DisplayNameFor(model => model.fromAddress)*@
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fromAddress)
+        </dd>
+
+        <dt>
+            To Address
+
+            @*@Html.DisplayNameFor(model => model.toaddress)*@
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.toaddress)
+        </dd>
+
+        <dt>
+            Notes
+            @*@Html.DisplayNameFor(model => model.notes)*@
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.notes)
+        </dd>
+
+        <dt>
+            Total
+            @*@Html.DisplayNameFor(model => model.total)*@
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.total)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PaidorNot)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PaidorNot)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OrderDetail.OrderID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OrderDetail.OrderID)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.invoiceID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

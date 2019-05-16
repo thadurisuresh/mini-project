@@ -1,0 +1,75 @@
+﻿@model test.Models.CreateInvoice
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/layout1.cshtml";
+}
+
+
+
+<div>
+   
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.fromAddress)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fromAddress)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.toaddress)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.toaddress)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.notes)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.notes)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.total)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.total)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PaidorNot)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PaidorNot)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OrderDetail.OrderID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OrderDetail.OrderID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OrderProduct.orderId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OrderProduct.orderId)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.invoiceID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,140 @@
+﻿@model IEnumerable<test.Models.CreateInvoice>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/layout1.cshtml";
+}<style>
+    #apply {
+        font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+        #apply td, #apply th {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+
+        #apply tr {
+            background-color: #f2f2f2;
+        }
+
+            #apply tr:hover {
+                background-color: #ddd;
+            }
+
+        #apply th {
+            padding-top: 12px;
+            padding-bottom: 12px;
+            text-align: left;
+            background-color: #4CAF50;
+            color: white;
+        }
+</style>
+<br/>
+<br/>
+<br/>
+<br/>
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+@using (Html.BeginForm("Index", "CreateInvoices2", FormMethod.Post))
+{
+    <p>
+        @Html.TextBox("invoiceID")
+        <input type="submit" name="invoiceID" id="invoiceID" value="Search" class="btn btn-info" />
+    </p>
+}
+@*@foreach (var item in Model)
+{
+
+    <ul style="list-style-type:none; color:black;text-align:right end; align-content:flex-end" class="abc">
+        <li>
+            Customer id:  @Html.DisplayFor(modelItem => item.OrderProduct.Customer.CustomerID)<br>
+        </li>
+        <li>
+            Customer Name: @Html.DisplayFor(modelItem => item.OrderProduct.Customer.CustomerName)<br>
+        </li>
+        <li>
+            address :@Html.DisplayFor(modelItem => item.OrderProduct.Customer.Email)<br>
+        </li>
+        <li>
+            Email:   @Html.DisplayFor(modelItem => item.OrderProduct.Customer.Contact)<br>
+        </li>
+        <li>
+            Contact : @Html.DisplayFor(modelItem => item.OrderProduct.Customer.Address)<br>
+        </li>
+    </ul>
+
+}*@
+@*@foreach (var item in Model)
+{
+    <ul style="color:black">
+        <li>
+            <b> From Address :</b>  @Html.DisplayFor(modelItem => item.fromAddress)
+        </li>
+        <li>
+            <b> Address  :</b>@Html.DisplayFor(modelItem => item.toaddress)
+        </li>
+    </ul>
+}*@
+
+<table class="table" style="color:black" id="apply">
+    <tr>
+
+        <th>
+            @Html.DisplayNameFor(model => model.notes)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.total)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PaidorNot)
+        </th>
+       
+        <th>
+            @Html.DisplayNameFor(model => model.OrderProduct.orderId)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.notes)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OrderProduct.total)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PaidorNot)
+            </td>
+           
+            <td>
+                @Html.DisplayFor(modelItem => item.OrderProduct.orderId)
+            </td>
+
+            <td>
+                <input type="button" class="btn btn-info"
+                       value="Edit"
+                       onclick="location.href='@Url.Action("Edit","CreateInvoices2",new { id = item.invoiceID})'" />|
+                <input type="button" class="btn btn-info"
+                       value="Details"
+                       onclick="location.href='@Url.Action( "Details","CreateInvoices2", new { id = item.invoiceID})'" />|
+                <input type="button" class="btn btn-primary"
+                       value="Delete"
+                       onclick="location.href='@Url.Action( "Delete","CreateInvoices2",new { id = item.invoiceID })'" />|
+                <input type="button" class="btn btn-primary"
+                       value="Print"
+                       onclick="location.href='@Url.Action( "Getall","CreateInvoices2",new { invoiceID = item.invoiceID})'" />
+
+                @*@Html.ActionLink("Details", "Details", new { id = item.invoiceID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.invoiceID }) |
+                @Html.ActionLink("Print invoice", "Getall", new { invoiceID = item.invoiceID })*@
+            </td>
+        </tr>
+    }
+
+</table>

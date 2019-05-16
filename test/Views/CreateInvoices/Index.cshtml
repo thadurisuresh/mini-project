@@ -1,0 +1,185 @@
+﻿@model IEnumerable<test.Models.CreateInvoice>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/layout1.cshtml";
+}
+
+
+<p>
+    @*@Html.ActionLink("print", "GetAll")*@
+    @*@Html.ActionLink("print", "PrintAll")*@
+</p>
+<style>
+    #apply {
+        font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+        #apply td, #apply th {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+
+        #apply tr {
+            background-color: #f2f2f2;
+        }
+
+            #apply tr:hover {
+                background-color: #ddd;
+            }
+
+        #apply th {
+            padding-top: 12px;
+            padding-bottom: 12px;
+            text-align: left;
+            background-color: #4CAF50;
+            color: white;
+        }
+
+    .size {
+        font-size: 10px;
+    }
+    .button1 {
+
+        box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    }
+
+    .button2:hover {
+        box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+    }
+</style>
+@if (Session["UserName"] == null)
+{
+    <script type="text/javascript">
+
+        window.onload = window.history.forward(0);  //calling function on window on-load
+
+    </script>
+    <head runat="server">
+        <script type="text/javascript">
+
+            window.onload = window.history.forward(0);
+
+        </script>
+
+        <title></title>
+    </head>
+}
+<p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+@using (Html.BeginForm("Index", "CreateInvoices", FormMethod.Post))
+{
+    <p>
+        Search:@Html.TextBox("invoiceID")
+        <input type="submit" name="invoiceID" id="invoiceID" value="Search" class="btn btn-info" />
+    </p>
+}///
+<table class="table" id="apply" style="color:black">
+    <tr>
+        <th>
+            Invoice ID
+        </th>
+        <th>
+            From Address
+            @*@Html.DisplayNameFor(model => model.fromAddress)*@
+        </th>
+        <th>
+            To Address
+            @*@Html.DisplayNameFor(model => model.toaddress)*@
+        </th>
+        <th>
+            OrderID
+        </th>
+        <th>
+            InvoiceID
+        </th>
+        <th>
+            Unit Price
+        </th>
+        <th>
+            Quantity
+        </th>
+
+        <th>
+            Total
+            @*@Html.DisplayNameFor(model => model.total)*@
+        </th>
+        <th>
+            Notes
+            @*@Html.DisplayNameFor(model => model.notes)*@
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PaidorNot)
+        </th>
+
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.invoiceID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.fromAddress)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.toaddress)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OrderDetail.OrderID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.invoiceID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OrderDetail.UnitPrice)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OrderDetail.Quantity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.total)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.notes)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.PaidorNot)
+            </td>
+
+
+
+
+            <td>
+
+                <div>
+                    <input type="button" class="btn btn-info size"
+                           value="Edit"
+                           onclick="location.href='@Url.Action("Edit", "CreateInvoices",new { id = item.invoiceID  })'" />
+
+                    <input type="button" class="btn btn-primary size button button1"
+                           value="Details"
+                           onclick="location.href='@Url.Action("Details", "CreateInvoices",new { id = item.invoiceID  })'" />|
+                    <input type="button" class="btn btn-danger size button button1"
+                           value="Delete"
+                           onclick="location.href='@Url.Action("Delete", "CreateInvoices",new { id = item.invoiceID  })'" />|
+                    <input type="button" class="btn btn-primary size button button1"
+                           value="Print Invoices"
+                           onclick="location.href='@Url.Action("GetAll", "CreateInvoices",new { id = item.invoiceID  })'" />
+                </div>
+                @*@Html.ActionLink("Edit", "Edit", new { id = item.invoiceID }) |
+        @Html.ActionLink("Details", "Details", new { id = item.invoiceID }) |
+        @Html.ActionLink("Delete", "Delete", new { id = item.invoiceID })
+        @Html.ActionLink("Print Invoices", "GetAll", new { id = item.invoiceID })*@
+            </td>
+        </tr>
+    }
+
+</table>
+

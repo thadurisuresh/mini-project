@@ -1,0 +1,117 @@
+﻿@model IEnumerable<test.Models.Registration>
+
+@{
+    ViewBag.Title = "Index";
+}
+@if(Session["UserName"] == null)
+{
+    <script type="text/javascript">
+
+        window.onload = window.history.forward(0);  //calling function on window on-load
+
+    </script>
+    <head runat="server">
+        <script type="text/javascript">
+
+            windowwindow.onload = window.history.forward(0);
+
+        </script>
+
+        <title></title>
+    </head>
+}
+
+<style>
+    #apply {
+        font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+        #apply td, #apply th {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+
+        #apply tr {
+            background-color: #f2f2f2;
+        }
+
+            #apply tr:hover {
+                background-color: #ddd;
+            }
+
+        #apply th {
+            padding-top: 12px;
+            padding-bottom: 12px;
+            text-align: left;
+            background-color: #4CAF50;
+            color: white;
+        }
+</style>
+<p>
+    @Html.ActionLink("ADD USER", "registration")
+</p>
+
+<table class="table" id="apply" style="color:black">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.userID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LastName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UserName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Password)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Address)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.userID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Password)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Address)
+            </td>
+            <td>
+                <input type="button" class="btn btn-info"
+                       value="Edit"
+                       onclick="location.href='@Url.Action("Edit", "User",new { id = item.UserName})'" />|
+                <input type="button" class="btn btn-primary"
+                       value="Details"
+                       onclick="location.href='@Url.Action("Details", "User",new { id = item.UserName })'" />|
+                <input type="button" class="btn btn-danger"
+                       value="Delete"
+                       onclick="location.href='@Url.Action("Delete", "User",new { id = item.UserName})'" />
+                @*@Html.ActionLink("edit user details", "Edit", new { id = item.UserName }) |
+        @Html.ActionLink("Details", "Details", new { id = item.UserName }) |
+        @Html.ActionLink("Delete user ", "Delete", new { id = item.UserName })*@
+            </td>
+        </tr>
+    }
+
+</table>

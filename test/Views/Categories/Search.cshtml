@@ -1,0 +1,67 @@
+﻿@model IEnumerable<test.Models.Category>
+
+@{
+    ViewBag.Title = "Search";
+}
+
+
+
+    @{
+
+        WebGrid webGrid = new WebGrid(source: Model);
+    }
+    <style type="text/css">
+        body {
+            font-family: Arial;
+            font-size: 10pt;
+        }
+
+        .Grid {
+            border: 1px solid #ccc;
+            border-collapse: collapse;
+        }
+
+            .Grid th {
+                background-color: #F7F7F7;
+                font-weight: bold;
+            }
+
+            .Grid th, .Grid td {
+                padding: 5px;
+                border: 1px solid #ccc;
+            }
+
+            .Grid, .Grid table td {
+                border: 0px solid #ccc;
+            }
+
+                .Grid th a, .Grid th a:visited {
+                    color: #333;
+                }
+    </style>
+    <p>
+        @Html.ActionLink("Create New", "Create")
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+        <div class="">
+            <div>
+                @Html.DropDownList("Categories.categoryName", (IEnumerable<SelectListItem>)ViewBag.categoryName, "Select Company", new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.categoryName, "", new { @class = "text-danger" })
+                <input type="submit" value="Search" class="btn btn-primary" />
+            </div>
+        </div>
+    }
+@*<p>
+            Name:@Html.TextBox("id")<br />
+            <input type="Submit" value="Search" />
+            @webGrid.GetHtml(
+               htmlAttributes: new { @id = "WebGrid", @class = "Grid" },
+               columns: webGrid.Columns(
+                        webGrid.Column("CategoryID", "CategoryID"),
+                        webGrid.Column("CategoryName", "CategoryName"),
+
+                        webGrid.Column("Description", "Description")))
+        </p>*@
+
+    }

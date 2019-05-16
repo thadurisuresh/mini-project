@@ -1,0 +1,168 @@
+﻿@model IEnumerable<test.Models.CreateInvoice>
+
+@{
+                /**/
+
+                Layout = null;
+}
+
+<style>
+    #apply {
+        font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+        #apply td, #apply th {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+
+        #apply tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        #apply tr:hover {
+            background-color: #ddd;
+        }
+
+        #apply th {
+            padding-top: 12px;
+            padding-bottom: 12px;
+            text-align: left;
+            background-color: #4CAF50;
+            color: white;
+        }
+
+    .abc {
+        text-align: right
+    }
+
+    div.sticky {
+ 
+        width: 100%;
+        position: fixed;
+        bottom: 0px;
+        text-align: center;
+     
+    }
+</style>
+
+@*@using (Html.BeginForm("Index", "CreateInvoices", FormMethod.Post))
+    {
+        <p>
+            Search:@Html.TextBox("invoiceID")
+            <input type="submit" name="invoiceID" id="invoiceID" value="Search" class="btn btn-info" />
+        </p>
+    }*@
+
+<p>
+    @*@Html.ActionLink("print", "GetAll")*@
+    <input type="button" value="Print" class="btn btn-info" onclick="javascript:window.print()"/>
+
+</p>
+@foreach (var item in Model)
+{
+    <ul>
+        <li>
+            <b> From Address :</b>  @Html.DisplayFor(modelItem => item.fromAddress)
+        </li>
+        <li>
+            <b> Address  :</b>@Html.DisplayFor(modelItem => item.toaddress)
+        </li>
+    </ul>
+}
+
+
+
+@foreach (var item in Model)
+{
+
+    <ul style="list-style-type:none; align-content:flex-end" class="abc">
+        <li>
+            Customer id:  @Html.DisplayFor(modelItem => item.OrderDetail.Order.Customer.CustomerID)<br>
+        </li>
+        <li>
+            Customer Name: @Html.DisplayFor(modelItem => item.OrderDetail.Order.Customer.CustomerName)<br>
+        </li>
+        <li>
+            address :@Html.DisplayFor(modelItem => item.OrderDetail.Order.Customer.Address)<br>
+        </li>
+        <li>
+            Email:   @Html.DisplayFor(modelItem => item.OrderDetail.Order.Customer.Email)<br>
+        </li>
+        <li>
+            Contact : @Html.DisplayFor(modelItem => item.OrderDetail.Order.Customer.Contact)<br>
+        </li>
+    </ul>
+
+}
+
+
+<table class="table" id="apply" style="color:black">
+    <tr>
+
+        <th>
+            OrderID
+        </th>
+        <th>
+            InvoiceID
+        </th>
+        <th>
+            Unit Price
+        </th>
+        <th>
+            Quantity
+        </th>
+
+      
+        <th>
+            Notes
+            @*@Html.DisplayNameFor(model => model.notes)*@
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PaidorNot)
+        </th>
+
+
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.OrderDetail.OrderID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.invoiceID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OrderDetail.UnitPrice)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OrderDetail.Quantity)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.notes)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.PaidorNot)
+            </td>
+
+
+
+        </tr>
+    }
+
+</table>
+
+@foreach (var item in Model)
+{
+<div class="sticky">
+    <h2>Tax: 0%</h2>
+    <h2>Total Amount : @Html.DisplayFor(modelItem => item.total)</h2>
+</div>  }
+

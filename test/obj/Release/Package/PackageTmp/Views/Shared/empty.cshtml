@@ -1,0 +1,95 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order and Invoice Management</title>
+    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <script src="~/Scripts/modernizr-2.6.2.js"></script>
+    <style>
+        .abody {
+            /*background-color: coral;*/
+            height: 900px;
+            /*background-image: url('../../Admin6.jpg');*/
+            font-family: 'Roboto', sans-serif;
+            font-size: 16px;
+            font-weight: 300;
+            color: #888;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        .afoot {
+            /*background-color: transparent;*/
+            background-color: transparent;
+            color: black;
+            text-decoration: solid;
+        }
+
+            .afoot p:hover {
+                background-color: black;
+                color: yellow;
+                text-decoration: solid;
+            }
+
+        .a {
+            background-color: transparent;
+        }
+
+        z
+    </style>
+</head>
+<body style="
+        background-image: url('../../free-invoice-template-postal-envelope-1.jpg');
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-size: cover">
+    <div class="navbar-fixed-top" style="background-color:cadetblue">
+        <div class="container-fluid easy">
+            <div class="navbar-header">
+                @*<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>*@
+                <label style="color:aliceblue;text-align:center ;font-size:xx-large">Order and Invoice Management</label>
+               
+                @*<div style="width:auto; background-color:transparent">
+                        @if (Request.IsAuthenticated)
+                        {
+                            <strong>@Html.Encode(User.Identity.Name)</strong>
+                            @Html.ActionLink("Log Out", "Logout", "User")
+                        }
+                        else
+                        {
+                            @Html.ActionLink("Register", "Register", "User")
+                            <span> | </span>
+                            @Html.ActionLink("Log In", "Login", "User")
+                        }
+                    </div>*@
+
+
+
+
+
+
+            </div>
+            @*<div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav"></ul>
+                </div>*@
+        </div>
+    </div>
+    <br />
+    <div class="container-fluid body-content abody ">
+        @RenderBody()
+
+        <footer class="afoot navbar-fixed-bottom" style="text-align:center;">
+            <p>&copy; @DateTime.Now.Year -Order and Invoice Management </p>
+        </footer>
+    </div>
+
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+</body>
+</html>
